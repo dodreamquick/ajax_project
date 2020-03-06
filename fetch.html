@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
     <article>
-        
+
     </article>
     <body>
         <input type="button" value="fetch" onclick="
-        fetch('html').then(function(response){
+        fetch('html').then(function(response){ //then 안의 function에는 response가 오기로 약속되어 있음.
         response.text().then(function(text){
         alert(text); //text에 서버에 요청해서 응답받은 내용이 담김. 
         document.querySelector('article').innerHTML=text;
