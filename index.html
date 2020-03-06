@@ -7,11 +7,12 @@
   <script src="colors.js"></script>
 </head>
 <body>
+  
   <h1><a href="index.html">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
     nightDayHandler(this);
   ">
-  <ol>
+  <ol id="nav">
     <li><a href="#!html" onClick="fetchPage('html')
       ">
       HTML</a></li>
@@ -35,6 +36,21 @@
     } else {
       fetchPage('welcome');
     }
+    fetch('list').then(function(response){
+        response.text().then(function(text){
+          var items = text.split(',');
+          var i = 0;
+          var tags = '';
+          while (i<items.length){
+            var item = items[i]
+            item=item.trim();
+            var tag = '<li><a href="#!"'+item+'"onclick="fetchPage(\''+item+'\')">'+item+'</a></li>'
+            tags=tags+tag;
+            i=i+1;
+          }
+          document.querySelector('#nav').innerHTML=text;
+        })
+      })
   </script>
 </body>
 </html>
